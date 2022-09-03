@@ -1,30 +1,14 @@
 class Solution
 {
-    bool check(vector<string> &board, int i, int j) {
-        int a = i, b = j, n = board.size();
-        while (a >= 0 && b >= 0) {
-            if (board[a][b] == 'Q') return false;
-            a--;
-            b--;
-        }
-        
-        a = i, b = j;
-        while (a >= 0 && b >= 0) {
-            if (board[a][b] == 'Q') return false;
-            b--;
-        }
-        
-        a = i, b = j;
-        while (a < n && b >= 0) {
-            if (board[a][b] == 'Q') return false;
-            a++;
-            b--;
-        }
-        
+    int arr1[30] {}, arr2[30] {}, arr3[30] {};
+    bool check(int row, int col, int n)
+    {
+        if ((arr1[row + col]) || (arr2[n - 1 + row - col]) || (arr3[row]))
+            return false;
         return true;
     }
-    
-    void isValid(vector<vector < string>> &ans, int col, int n, vector<string> &chess)
+
+    void isValid(vector<vector < string>> &ans, int col, int n, vector< string > &chess)
     {
         if (col == n)
         {
@@ -34,11 +18,17 @@ class Solution
 
         for (int row = 0; row < n; row++)
         {
-            if (check(chess, row, col))
+            if (check(row, col, n))
             {
                 chess[row][col] = 'Q';
+                arr1[row + col] = 1;
+                arr2[n - 1 + row - col] = 1;
+                arr3[row] = 1;
                 isValid(ans, col + 1, n, chess);
                 chess[row][col] = '.';
+                arr1[row + col] = 0;
+                arr2[n - 1 + row - col] = 0;
+                arr3[row] = 0;
             }
         }
     }
@@ -46,7 +36,7 @@ class Solution
         vector<vector < string>> solveNQueens(int n)
         {
             vector<vector < string>> ans;
-            vector <string> chess;
+            vector<string> chess;
             string s(n, '.');
             for (int i = 0; i < n; i++)
             {
