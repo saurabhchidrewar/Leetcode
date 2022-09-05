@@ -33,9 +33,8 @@ public:
                 Node* node = q.front();
                 level.push_back(node->val);
                 q.pop();
-                vector <Node*> vec = node->children;
-                for (int j = 0; j < vec.size(); j++) {
-                    q.push(vec[j]);
+                for (int j = 0; j < (node->children).size(); j++) {
+                    q.push((node->children)[j]);
                 }
             }
             bfs.push_back(level);
