@@ -10,43 +10,45 @@
  *};
  */
 
-class Solution
-{
-    map<TreeNode*, bool> mp;
-    bool isBST(TreeNode *root, long mn, long mx)
-    {
+/*
+class Solution {
+    bool isBST(TreeNode* root, long mn, long mx) {
         if (root == NULL)
             return true;
 
-        if (mp.find(root) != mp.end())
-            return mp[root];
-
         if ((root->val >= mx) || (root->val <= mn))
-            return mp[root] = false;
+            return false;
 
-        bool a;
-        if (mp.find(root->left) != mp.end())
-            a = mp[root->left];
-        else {
-            a = isBST(root->left, mn, root->val);
-            mp[root->left] = a;
-        }        
-        if (!a) return mp[root] = false;
+        bool a = isBST(root->left, mn, root->val);
+        if (!a) return false;
 
-        bool b;
-        if (mp.find(root->right) != mp.end())
-            b = mp[root->right];
-        else {
-            b = isBST(root->right, root->val, mx);
-            mp[root->right] = b;
-        }
-        if (!b) return mp[root] = false;
+        bool b = isBST(root->right, root->val, mx);
+        if (!b) return false;
 
-        return mp[root] = true;
+        return true;
     }
-    public:
-        bool isValidBST(TreeNode *root)
-        {
-            return isBST(root, LONG_MIN, LONG_MAX);
+public:
+    bool isValidBST(TreeNode* root) {
+        return isBST(root, LONG_MIN, LONG_MAX);
+    }
+};
+*/
+class Solution
+{       
+    vector <int> inorder;
+    void traverse(TreeNode* root) {
+        if (root == NULL) return;
+        traverse(root->left);
+        inorder.push_back(root->val);
+        traverse(root->right);
+    }
+public:
+    bool isValidBST(TreeNode *root) {
+        traverse(root);
+        for (int i = 1; i < inorder.size(); i++) {
+            if (inorder[i] <= inorder[i-1])
+                return false;
         }
+        return true;
+    }
 };
