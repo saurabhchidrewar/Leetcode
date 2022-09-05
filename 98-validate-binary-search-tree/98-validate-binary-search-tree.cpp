@@ -24,10 +24,22 @@ class Solution
         if ((root->val >= mx) || (root->val <= mn))
             return mp[root] = false;
 
-        bool a = isBST(root->left, mn, root->val);
+        bool a;
+        if (mp.find(root->left) != mp.end())
+            a = mp[root->left];
+        else {
+            a = isBST(root->left, mn, root->val);
+            mp[root->left] = a;
+        }        
         if (!a) return mp[root] = false;
 
-        bool b = isBST(root->right, root->val, mx);
+        bool b;
+        if (mp.find(root->right) != mp.end())
+            b = mp[root->right];
+        else {
+            b = isBST(root->right, root->val, mx);
+            mp[root->right] = b;
+        }
         if (!b) return mp[root] = false;
 
         return mp[root] = true;
