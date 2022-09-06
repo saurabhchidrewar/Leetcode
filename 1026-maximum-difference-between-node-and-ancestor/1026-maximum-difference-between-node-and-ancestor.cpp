@@ -10,21 +10,20 @@
  * };
  */
 class Solution {
-    int ans = 0;
-    void solve(TreeNode* root, int low, int high) {
+    int solve(TreeNode* root, int low, int high, int temp) {
         if (root == NULL) {
-            ans = max(ans, high - low);
-            return;
+            return temp;
         }
         
         low = min(low, root->val);
         high = max(high, root->val);
-        solve(root->left, low, high);
-        solve(root->right, low, high);
+        int a = solve(root->left, low, high, high - low);
+        int b = solve(root->right, low, high, high - low);
+        return max(a,b);
     }
 public:
     int maxAncestorDiff(TreeNode* root) {
-        solve(root, 1e5 + 2, -1);
+        int ans = solve(root, 1e5 + 2, -1, 0);
         return ans;
     }
 };
