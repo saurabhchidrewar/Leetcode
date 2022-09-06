@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// Refer:  https://www.youtube.com/watch?v=Fl0fIKfTZKA
 class Solution {
     pair <TreeNode*, int> f(TreeNode* root) {
         if (root == NULL) {
