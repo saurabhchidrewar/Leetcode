@@ -10,22 +10,26 @@
  * };
  */
 class Solution {
-    TreeNode* ans;
-    int f(TreeNode* root) {
-        if (root == NULL)
-            return 0;
-        int l = f(root->left);
-        int r = f(root->right);
+    pair <TreeNode*, int> f(TreeNode* root) {
+        if (root == NULL) {
+            return {root, 0};
+        }
         
-        if (l == r) ans = root;
-        else if (l < r) f(root->right);
-        else f(root->left);
+        auto l = f(root->left);
+        auto r = f(root->right);
         
-        return max(l,r) + 1;
-    } 
+        int a = l.second, b = r.second;
+        if (a == b)
+            return {root, a + 1};
+        else if (a > b)
+            return {l.first, a + 1};
+        else
+            return {r.first, b + 1};
+        
+        return {root, max(a,b) + 1};
+    }
 public:
     TreeNode* lcaDeepestLeaves(TreeNode* root) {
-        f(root);
-        return ans;
+        return (f(root)).first;
     }
 };
