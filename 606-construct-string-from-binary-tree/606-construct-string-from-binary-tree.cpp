@@ -19,7 +19,6 @@ class Solution
         if (ans.size())
             ans += "(";
         ans += to_string(root->val);
-
         if (root->left == NULL && root->right) ans += "()";
         f(root->left);
         f(root->right);
