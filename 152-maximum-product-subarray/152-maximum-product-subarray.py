@@ -5,9 +5,7 @@ class Solution:
         res = nums[0]
         
         for i in nums:
-            temp = curMax * i
-            curMax = max(temp, curMin * i, i)
-            curMin = min(temp, curMin * i, i)
+            curMax, curMin = max(curMax * i, curMin * i, i), min(curMax * i, curMin * i, i)
             res = max(res, curMax, curMin)
         
         return res
