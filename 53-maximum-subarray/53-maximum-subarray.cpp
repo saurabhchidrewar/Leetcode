@@ -6,7 +6,7 @@ public:
         {
             val += c;
             mx = max(mx, val);
-            val = max(val, 0);
+            val = max(val, 0); // To include the element or not
         }
         return mx;
     }
