@@ -1,8 +1,8 @@
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         # Store the max Element
-        res = max(nums)
         curMin, curMax = 1, 1
+        res = nums[0]
         
         for i in nums:
             temp = curMax * i
