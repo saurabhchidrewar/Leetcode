@@ -1,3 +1,17 @@
+/*
+Intuition: 
+TC: O(n^2)
+
+Create a hashmap storing distance of all the points from a point p
+(Traversing in points array)
+
+Store the correspondings boomerangs in ans.
+1. If there are 3 points with same distance :
+   # of possible combinations = 3 * (3-1) = 6
+2. If there are 2 points with same distance : (a: b,c)
+   # of possible combinations = 2 * (2-1) = 2 (a,b,c) (a,c,b)
+*/
+
 class Solution {
 public:
     int numberOfBoomerangs(vector<vector<int>>& points) {
