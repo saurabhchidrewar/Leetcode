@@ -15,15 +15,15 @@ public:
         } else {
             reverse(s.begin()+1, s.end());
         }
-        long long ans = 0;
+        num = 0;
         int power = 0;
         for (int i = s.size()-1; i >= 0; i--) {
-            if (s[i] == '-') ans*=-1;
+            if (s[i] == '-') num*=-1;
             else {
-                ans += ((s[i] - '0') * pow(10, power));
+                num += ((s[i] - '0') * pow(10, power));
                 power++;
             }
         }
-        return ans;
+        return num;
     }
 };
