@@ -1,3 +1,12 @@
+/*
+Variation of 
+Coin change problem : Minimum number of coins
+Dynamic Programming 
+Unbounded Knapsack
+
+Refer : DP Notes
+*/
+
 class Solution {
 public:
     int numSquares(int n) {
