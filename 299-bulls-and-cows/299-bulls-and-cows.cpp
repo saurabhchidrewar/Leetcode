@@ -1,22 +1,26 @@
-class Solution {
-public:
-    string getHint(string secret, string guess) {
-        unordered_map <int, int> mp;
-        int a = 0, b = 0;
-        for (int i = 0; i < secret.size(); i++){
-            if (secret[i] != guess[i]) mp[secret[i]]++;    
-        } 
-        for (int i = 0; i < secret.size(); i++) {
-            if (secret[i] == guess[i]) a++;
-            else if (mp.find(guess[i]) != mp.end() && mp[guess[i]] > 0)
+class Solution
+{
+    public:
+        string getHint(string secret, string guess)
+        {
+            unordered_map<int, int> mp;
+            int a = 0, b = 0;
+            for (int i = 0; i < secret.size(); i++)
             {
-                mp[guess[i]]--;
-                b++;
+                if (secret[i] != guess[i]) mp[secret[i]]++;
             }
+            for (int i = 0; i < secret.size(); i++)
+            {
+                if (secret[i] == guess[i]) a++;
+                else if (mp[guess[i]] > 0)
+                {
+                    mp[guess[i]]--;
+                    b++;
+                }
+            }
+            string ans = to_string(a) + "A" + to_string(b) + "B";
+            return ans;
         }
-        string ans = to_string(a) + "A" + to_string(b) + "B";
-        return ans;
-    }
 };
 
 /*
