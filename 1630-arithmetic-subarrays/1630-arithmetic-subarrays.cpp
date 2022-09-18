@@ -1,11 +1,10 @@
 class Solution {
-    bool solve(vector <int> nums, int i, int j) {
-        sort(nums.begin() + i, nums.begin() + j + 1);
-        // cout << i << " " << j << " : ";
-        // for (auto &c: nums) cout << c << " ";
-        // cout << endl;
-        int diff = nums[i+1] - nums[i];
-        for (int k = i+1; k <= j; k++) {
+    bool solve(vector <int> &arr, int i, int j) {
+        vector <int> nums;
+        for (int k = i; k <= j; k++) nums.push_back(arr[k]);
+        sort(nums.begin(), nums.end());
+        int diff = nums[1] - nums[0];
+        for (int k = 1; k < nums.size(); k++) {
             if (nums[k] - nums[k-1] != diff) return false;
         }
         return true;
