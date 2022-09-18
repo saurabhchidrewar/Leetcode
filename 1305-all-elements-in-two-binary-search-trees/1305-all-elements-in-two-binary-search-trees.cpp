@@ -20,40 +20,15 @@ class Solution {
         in(root->right);
     }
     
-    void solve(TreeNode* root1, TreeNode* root2, vector <int> &ans) {
+    vector <int> solve(TreeNode* root1, TreeNode* root2) {
         in(root1);
-        vector <int> arr1 = inorder;
-        inorder.clear();
         in(root2);
-        vector <int> arr2 = inorder;
-        // return ans;
-        
-        int i = 0, j = 0;
-        while (i != arr1.size() && j != arr2.size()) {
-            if (arr1[i] <= arr2[j]) {
-                ans.push_back(arr1[i]);
-                i++;
-            } else {
-                ans.push_back(arr2[j]);
-                j++;
-            }
-        }
-        
-        while (j != arr2.size()) {
-            ans.push_back(arr2[j]);
-            j++;
-        }
-        
-        while (i != arr1.size()) {
-            ans.push_back(arr1[i]);
-            i++;
-        }
+        sort(inorder.begin(), inorder.end());
+        return inorder;
     }
     
 public:
     vector<int> getAllElements(TreeNode* root1, TreeNode* root2) {
-        vector <int> ans;
-        solve(root1, root2, ans);
-        return ans;
+        return solve(root1, root2);
     }
 };
