@@ -14,8 +14,6 @@ class Solution:
         
         n = len(arr1)
         
-        print(arr1, arr2)
-        
         for i in range(n):
             arr1[i].zfill(mx)
             arr2[i].zfill(mx)
