@@ -7,7 +7,6 @@ class Solution:
         ans = []
         
         def isValid(temp):
-            t = ""
             arr = temp.split('.')
             if (len(arr) < 4):
                 return False
@@ -18,9 +17,9 @@ class Solution:
                     return False
             return True
         
-        for i in range(1, n+3):
-            for j in range(i+1, n+2):
-                for k in range(j+1, n+1):
+        for i in range(1, 4):
+            for j in range(i+1, i+4):
+                for k in range(j+1, j+4):
                     temp = ""
                     for v in range(n):
                         if (v == i or v == j or v == k):
