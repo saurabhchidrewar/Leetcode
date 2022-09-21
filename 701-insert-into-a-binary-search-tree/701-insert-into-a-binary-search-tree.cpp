@@ -11,19 +11,19 @@
  */
 class Solution {
     TreeNode* parent = NULL;
-    void traverse(TreeNode* root, int data) {
-        if (root->val > data) {
-            if (root->left == NULL) 
-                parent = root;
+    void traverse(TreeNode* root, TreeNode* node) {
+        if (root->val > node->val) {
+            if (root->left == NULL)
+                root->left = node;
             else
-                traverse(root->left, data);
+                traverse(root->left, node);
         }
         
-        if (root->val < data) {
+        if (root->val < node->val) {
             if (root->right == NULL)
-                parent = root;
+                root->right = node;
             else
-                traverse(root->right, data);
+                traverse(root->right, node);
         }
     }
 public:
@@ -32,13 +32,7 @@ public:
         if (root == NULL)
             return node;
         
-        traverse(root, data);
-        if (parent->val > data) {
-            parent->left = node;
-        } else {
-            parent->right = node;
-        }
-        
+        traverse(root, node);
         return root;
     }
 };
