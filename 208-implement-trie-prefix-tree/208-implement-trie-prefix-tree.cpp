@@ -6,7 +6,7 @@ struct Node {
         return (arr[ch - 'a'] != NULL);
     }
     
-    void put(char ch, Node* node) {
+    void set(char ch, Node* node) {
         arr[ch - 'a'] = node;
     }
     
@@ -20,40 +20,37 @@ struct Node {
 };
 
 class Trie {
-private:
     Node* root;
 public:
     Trie() {
         root = new Node();
     }
     
-    void insert(string words) {
+    void insert(string word) {
         Node* node = root;
-        for (int i = 0; i < words.size(); i++) {
-            if (!node->containsKey(words[i])) {
-                node->put(words[i], new Node());
+        for (int i = 0; i < word.size(); i++) {
+            if (!node->containsKey(word[i])) {
+                node->set(word[i], new Node());
             }
-            node = node->get(words[i]);
+            node = node->get(word[i]);
         }
         node->setEnd();
     }
     
-    bool search(string words) {
-        Node* node = root;
-        for (int i = 0; i < words.size(); i++) {
-            if (!node->containsKey(words[i]))
-                return false;
-            node = node->get(words[i]);
+    bool search(string word) {
+        Node * node = root;
+        for (int i = 0; i < word.size(); i++) {
+            if (!node->containsKey(word[i])) return false;
+            node = node->get(word[i]);
         }
-        return node->flag;
+        return node->flag == true;
     }
     
-    bool startsWith(string words) {
-        Node* node = root;
-        for (int i = 0; i < words.size(); i++) {
-            if (!node->containsKey(words[i]))
-                return false;
-            node = node->get(words[i]);
+    bool startsWith(string word) {
+        Node * node = root;
+        for (int i = 0; i < word.size(); i++) {
+            if (!node->containsKey(word[i])) return false;
+            node = node->get(word[i]);
         }
         return true;
     }
