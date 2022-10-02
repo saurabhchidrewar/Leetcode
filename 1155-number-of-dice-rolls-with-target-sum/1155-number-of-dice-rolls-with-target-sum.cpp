@@ -1,6 +1,6 @@
 class Solution {
     int mod = 1e9 + 7;
-    int solve(int n, int k, int target, vector <vector<long>> &dp) {
+    int solve(int n, int k, int target, vector <vector<int>> &dp) {
         if (target < 0)
             return 0;
         if ((n == 0 || k == 0) && target == 0)
@@ -20,7 +20,7 @@ class Solution {
     }
 public:
     int numRollsToTarget(int n, int k, int target) {
-        vector <vector<long>> dp(n+1, vector<long>(target+1, -1));
+        vector <vector<int>> dp(n+1, vector<int>(target+1, -1));
         return solve(n, k, target, dp);
     }
 };
