@@ -14,11 +14,11 @@ class Solution {
         if (root == NULL)
             return false;
         
-        bool a = removeLeaf(root->left, target);
-        if (a) root->left = NULL;
-        
-        bool b = removeLeaf(root->right, target);
-        if (b) root->right = NULL;
+        if (removeLeaf(root->left, target)) 
+            root->left = NULL;
+
+        if (removeLeaf(root->right, target)) 
+            root->right = NULL;
         
         if (!root->left && !root->right && root->val == target) 
             return true;
@@ -29,8 +29,8 @@ public:
     TreeNode* removeLeafNodes(TreeNode* root, int target) {
         if (root == NULL)
             return NULL;
-        bool t = removeLeaf(root, target);
-        if (t) return NULL;
+        if (removeLeaf(root, target)) 
+            return NULL;
         return root;
     }
 };
