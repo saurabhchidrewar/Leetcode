@@ -1,5 +1,4 @@
 class Solution {
-    int m,n;
     void traverse(vector<vector<int>>& rooms, vector<int>& vis, int &s, int i) {
         vis[i] = 1;
         s -= i;
@@ -10,7 +9,7 @@ class Solution {
     }
 public:
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
-        m = rooms.size();
+        int m = rooms.size();
         vector <int> vis(m, 0);
         int s = (m) * (m-1) / 2;
         traverse(rooms, vis, s, 0);
