@@ -3,8 +3,9 @@ class Solution
     public:
         string breakPalindrome(string palindrome)
         {
-            if (palindrome.size() / 2 == 0) return "";
-            for (int i = 0; i < palindrome.size() / 2; i++)
+            int n = palindrome.size() / 2;
+            if (n == 0) return "";
+            for (int i = 0; i < n; i++)
             {
                 if (palindrome[i] != 'a')
                 {
@@ -12,7 +13,7 @@ class Solution
                     return palindrome;
                 }
             }
-            palindrome[palindrome.size()-1] = 'b';
+            palindrome[palindrome.size() - 1] = 'b';
             return palindrome;
         }
 };
