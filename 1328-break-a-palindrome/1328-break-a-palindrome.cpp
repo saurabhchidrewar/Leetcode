@@ -3,9 +3,8 @@ class Solution
     public:
         string breakPalindrome(string palindrome)
         {
-            int n = palindrome.size() / 2;
-            if (n == 0) return "";
-            for (int i = 0; i < n; i++)
+            if (palindrome.size() / 2 == 0) return "";
+            for (int i = 0; i < palindrome.size() / 2; i++)
             {
                 if (palindrome[i] != 'a')
                 {
