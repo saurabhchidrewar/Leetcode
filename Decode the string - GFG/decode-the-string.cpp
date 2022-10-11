@@ -12,9 +12,8 @@ public:
     string decodedString(string s){
         // code here
         stack <char> st;
-        int i = 0;
-        while (i != s.size()) {
-            // cout << i << " ";
+        for (int i = 0; i < s.size(); i++)
+        {
             if (st.empty()) {
                 st.push(s[i]);
             } else {
@@ -30,9 +29,7 @@ public:
                         k += (st.top() - '0') * p;
                         p *= 10;
                         st.pop();
-                        // cout << p << k << endl;
                     }
-                    // cout << val << endl;
                     for (int i = 0; i < k; i++) {
                         for (int j = val.size()-1; ~j; j--) {
                             st.push(val[j]);
@@ -40,7 +37,6 @@ public:
                     }
                 } else st.push(s[i]);
             }
-            i++;
         }
         
         string ans;
