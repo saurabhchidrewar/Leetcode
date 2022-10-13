@@ -41,9 +41,6 @@ public:
         
         arr[i] *= -1; // Instead of vis array
         
-        bool a = canReach(arr, i + arr[i]);
-        if (a) return true;
-        bool b = canReach(arr, i - arr[i]);
-        return b;
+        return (canReach(arr, i - arr[i]) || canReach(arr, i + arr[i]));
     }
 };
