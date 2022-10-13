@@ -11,13 +11,9 @@ public:
 class Solution {
 public:
     int getImportance(vector<Employee*> employees, int id) {
-        unordered_map <int, pair<int, vector<int>>> mp;
-        
+        unordered_map <int, pair<int, vector<int>>> mp; 
         for (auto c: employees) {
-            int ID = c->id;
-            int IM = c->importance;
-            vector<int> SUB = c->subordinates;
-            mp[ID] = {IM, SUB};
+            mp[c->id] = {c->importance, c->subordinates};
         }
         
         int imp = 0;
