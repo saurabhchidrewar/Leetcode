@@ -12,13 +12,9 @@ class Solution {
 public:
     ListNode* deleteMiddle(ListNode* head) {
         ListNode* slow = head, *fast = head;
-        while (slow && fast) {
-            if (fast->next)
-                fast = fast->next->next;
-            else
-                break;
+        while (slow && fast && fast->next) {
+            fast = fast->next->next;
             slow = slow->next;
-            // cout << slow->val << " " << fast->val << endl;
         } 
         if (head == slow) return head->next;
         
