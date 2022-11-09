@@ -4,7 +4,7 @@ class StockSpanner {
 public:
     StockSpanner() {
         i = 0;
-        while (!st.empty()) st.pop();
+        st = stack <pair<int, int>> ();
     }
     
     int next(int price) {
